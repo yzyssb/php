@@ -1,4 +1,5 @@
 <?php
+
 use think\Route;
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
@@ -21,11 +22,19 @@ use think\Route;
 
 // ];
 
-Route::get('index','index/index/index');
-Route::get('getDatas','index/index/getDatas');
-Route::post('insertData','index/index/insertData');
-Route::post('deleteData','index/index/deleteData');
-Route::post('updateData','index/index/updateData');
-Route::get('test','index/index/test');
-Route::any('insertDataToOrder','index/index/insertDataToOrder');
-Route::any('deleteFromOrder','index/index/deleteFromOrder');
+Route::get('index', 'index/index/index');
+Route::get('getDatas', 'index/index/getDatas');
+Route::post('insertData', 'index/index/insertData');
+Route::post('deleteData', 'index/index/deleteData');
+Route::post('updateData', 'index/index/updateData');
+Route::get('test', 'index/index/test');
+Route::any('insertDataToOrder', 'index/index/insertDataToOrder');
+Route::any('deleteFromOrder', 'index/index/deleteFromOrder');
+
+Route::any('writeForYzy','index/second/save');
+Route::any('updateForYzy/:id','index/second/update');
+Route::any('deleteForYzy/:id/:fname','index/second/delete');
+Route::any('listForYzy','index/second/list');
+Route::any('column/:name/:n','index/second/column');
+
+Route::miss('index/index/test');

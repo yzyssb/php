@@ -2,9 +2,11 @@
 
 namespace app\common\controller;
 
-class Base
+use think\Controller;
+
+class Base extends Controller
 {
-    public function responseSuccess($data = [])
+    public function responseSuccessAction($data = [])
     {
         return array(
             'code' => 0,
@@ -12,7 +14,7 @@ class Base
             'msg' => 'success'
         );
     }
-    public function responseFail($msg = 'error')
+    public function responseFailAction($msg = 'error')
     {
         return array(
             'code' => 0,

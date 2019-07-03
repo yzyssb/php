@@ -8,6 +8,8 @@ use think\Request;
 use think\Config;
 use app\common\controller\Test;
 use app\common\controller\Base as Base;
+use app\common\model\Order_2019 as MyList;
+use app\common\model\Yzy as MyYzy;
 
 // header("Access-Control-Allow-Origin:*");
 // header("Access-Control-Allow-Methods:GET, POST, OPTIONS, DELETE");
@@ -15,73 +17,77 @@ use app\common\controller\Base as Base;
 
 class Index extends Base
 {
-    public function index()
+    public function indexAction(Request $request)
     {
-        return Test::getIntance()->index('yzy',18);
+        // $data=MyYzy::get('13261394996');
+        // $this->assign('list',$data);
+        // return $this->fetch();
+
+        return json(MyYzy::select());
     }
-    public function getDatas()
+    public function getDatasAction()
     {
-        // $data = Db::table('YZY')->group('lastname')->order('id asc')->select();
+        $data = Db::name('yzy')->group('lastname')->order('id asc')->select();
         // dump($data);
         // $where['order_num']=['like','%1'];
         // $where['order_id']=['>=','200'];
         // $where=[];
-        // $data = Db::table('order_2019')->where($where)->order('order_id asc')->page('1,20')->select();
-        // if(count($data)>=0){
-        //     $res = self::responseSuccess($data);
-        // }else{
-        //     $res = self::responseFail("获取列表失败");
-        // }
-        // return json_encode($res);
+        // $data = Db::name('order_2019')->where($where)->order('order_id asc')->page('1,20')->select();
+        if(count($data)>=0){
+            $res = self::responseSuccessAction($data);
+        }else{
+            $res = self::responseFailAction("获取列表失败");
+        }
+        return json_encode($res);
 
-        // $res=Db::field('a.id','b.order_id')->table(['YZY'=>'a','order_2019'=>'b']);
+        // $res=Db::field('a.id','b.order_id')->table(['yzy'=>'a','order_2019'=>'b']);
         // dump($res);
     }
-    public function insertData()
+    public function insertDataAction()
     {
         $data = Request::instance()->param();
-        $result = Db::table('YZY')->insert($data);
+        $result = Db::name('yzy')->insert($data);
         if (!$result) {
-            $res = self::responseFail("添加失败");
+            $res = self::responseFailAction("添加失败");
         } else {
-            $res = self::responseSuccess();
+            $res = self::responseSuccessAction();
         }
         return json_encode($res);
     }
-    public function deleteData()
+    public function deleteDataAction()
     {
         // $data = Request::instance()->param('id');
-        // $result = Db::table('YZY')->where('id',$data)->delete();
+        // $result = Db::name('yzy')->where('id',$data)->delete();
         $data = Request::instance()->param();
-        $result = Db::table('YZY')->delete($data);
+        $result = Db::name('yzy')->delete($data);
         if (!$result) {
-            $res = self::responseFail("删除失败");
+            $res = self::responseFailAction("删除失败");
         } else {
-            $res = self::responseSuccess();
+            $res = self::responseSuccessAction();
         }
         return json_encode($res);
     }
-    public function updateData()
+    public function updateDataAction()
     {
         $data = Request::instance()->param('phone');
-        // $result=Db::table('YZY')->where("phone",$data)->update(["phone"=>'18516886719']);
+        // $result=Db::name('yzy')->where("phone",$data)->update(["phone"=>'18516886719']);
         // $where[]=['id','>',1];
-        $result = Db::table('YZY')->where('id>1', 'phone=18516886719')->update(["phone" => '13261394996']);
+        $result = Db::name('yzy')->where('id>1', 'phone=18516886719')->update(["phone" => '13261394996']);
         if ($result === false) {
-            $res = self::responseFail("修改失败");
+            $res = self::responseFailAction("修改失败");
         } else {
-            $res = self::responseSuccess();
+            $res = self::responseSuccessAction();
         }
         return json_encode($res);
     }
-    public function test()
+    public function testAction()
     {
         // $sql = "show tables";
         // $res = Db::query($sql);
 
         // $where["firstname"] = "杨";
         // $where["lastname"] = "志远";
-        // $res = Db::table('YZY')->where($where)->select();
+        // $res = Db::name('yzy')->where($where)->select();
         // dump($res);
 
         // $sql = 'show tables like ' . '"order_' . date('Y', time()) . '"';
@@ -104,34 +110,34 @@ class Index extends Base
 
         // $where['id']=['>=',87];
         $where['lastname'] = ['like', '%志%'];
-        $res = Db::table('YZY')->where($where)->limit(10)->select();
+        $res = Db::name('yzy')->where($where)->limit(10)->select();
         // foreach($res as $k=>$v){
         //     dump($v['id']);
         // }
         dump($res);
     }
-    public function insertDataToOrder(){
+    public function insertDataToOrderAction(){
         $res=true;
-        $data=Db::table('order_2019')->select();
+        $data=Db::name('order_2019')->select();
         for($i=0;$i<10;$i++){
             $arr['order_num']=count($data)+$i+1;
             $arr['order_money']=1000.012;
             $arr['pay_money']=100.012;
-            $res=Db::table('order_2019')->insert($arr);
+            $res=Db::name('order_2019')->insert($arr);
         }
         if($res){
-            return json(self::responseSuccess());
+            return json(self::responseSuccessAction());
         }else{
-            return json(self::responseFail("填充数据失败"));
+            return json(self::responseFailAction("填充数据失败"));
         }
     }
-    public function deleteFromOrder(){
+    public function deleteFromOrderAction(){
         $where['order_id']=['>=',1];
-        $res=Db::table('order_2019')->where($where)->delete();
+        $res=Db::name('order_2019')->where($where)->delete();
         if($res){
-            $arr=self::responseSuccess();
+            $arr=self::responseSuccessAction();
         }else{
-            $arr=self::responseFail('删除失败');
+            $arr=self::responseFailAction('删除失败');
         }
         return json($arr);
     }

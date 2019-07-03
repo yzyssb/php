@@ -13,9 +13,11 @@ return [
     // +----------------------------------------------------------------------
     // | 应用设置
     // +----------------------------------------------------------------------
+    // 开启注解路由
+    'route_annotation'   => true,
 
     // 应用调试模式
-    'app_debug'              => false,
+    'app_debug'              => true,
     // 应用Trace
     'app_trace'              => false,
     // 应用模式状态
@@ -66,7 +68,7 @@ return [
     // 默认的空控制器名
     'empty_controller'       => 'Error',
     // 操作方法后缀
-    'action_suffix'          => '',
+    'action_suffix'          => 'Action',
     // 自动搜索控制器
     'controller_auto_search' => false,
 
@@ -95,7 +97,7 @@ return [
     // 是否开启路由解析缓存
     'route_check_cache'      => false,
     // 是否强制使用路由
-    'url_route_must'         => false,
+    'url_route_must'         => true,
     // 域名部署
     'url_domain_deploy'      => false,
     // 域名根，如thinkphp.cn
