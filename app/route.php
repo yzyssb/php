@@ -37,4 +37,16 @@ Route::any('deleteForYzy/:id/:fname','index/second/delete');
 Route::any('listForYzy','index/second/list');
 Route::any('column/:name/:n','index/second/column');
 
+Route::any('getCategory','index/articlesManagement/getCategory');
+Route::any('handleCategory','index/articlesManagement/handleCategory');
+Route::any('deleteCategory','index/articlesManagement/deleteCategory');
+Route::any('getAllArticles','index/articlesManagement/getAllArticles');
+Route::any('getArticlesByCategoryId','index/articlesManagement/getArticlesByCategoryId');
+Route::any('handleArticle','index/articlesManagement/handleArticle');
+Route::any('deleteArticle','index/articlesManagement/deleteArticle');
+Route::any('getArticleDetail','index/articlesManagement/getArticleDetail');
+
+//上传接口
+Route::any('upload','index/articlesManagement/upload');
+
 Route::miss('index/index/test');

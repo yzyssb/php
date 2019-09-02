@@ -17,9 +17,17 @@ class Base extends Controller
     public function responseFailAction($msg = 'error')
     {
         return array(
-            'code' => 0,
+            'code' => 400,
             'data' => [],
             'msg' => $msg
+        );
+    }
+    public function systemErrorAction()
+    {
+        return array(
+            'code' => 401,
+            'data' => [],
+            'msg' => '系统问题'
         );
     }
 }

@@ -8,10 +8,10 @@ use traits\model\SoftDelete;
 
 class Yzy extends Model
 {
-    use SoftDelete;
+    // use SoftDelete;
     // protected $name="order_2019";
     protected $insert=['yzy_time'];
-    protected $deleteTime = 'delete_time';
+    // protected $deleteTime = 'delete_time';
     // protected $pk = "phone";
     protected $autoWriteTimestamp = 'datetime';
     
