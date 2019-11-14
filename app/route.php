@@ -65,4 +65,4 @@ Route::any('getMessage','wx/Home/getMessage');
 // Route::any('requestAPI','wx/Home/requestAPI');
 // Route::any('getAccess','wx/Home/getAccess');
 
-Route::miss('index/index/test');
+// Route::miss('index/index/test');
