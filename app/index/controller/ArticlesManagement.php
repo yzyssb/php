@@ -76,7 +76,7 @@ class ArticlesManagement extends Base
     {
         try {
             $params = $request->param();
-            $data = Articles::order('create_time desc')->paginate($params['limit']);
+            $data = Articles::where('title|content','like','%'.$params['key'].'%')->order('create_time desc')->paginate($params['limit']);
             if (count($data) == 0 && $params['page'] > 1) {
                 $data = Articles::order('update_time')->paginate($params['limit'], false, ["page" => $params['page'] - 1]);
             }

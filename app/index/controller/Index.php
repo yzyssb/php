@@ -80,42 +80,7 @@ class Index extends Base
         }
         return json_encode($res);
     }
-    public function testAction()
-    {
-        // $sql = "show tables";
-        // $res = Db::query($sql);
-
-        // $where["firstname"] = "杨";
-        // $where["lastname"] = "志远";
-        // $res = Db::name('yzy')->where($where)->select();
-        // dump($res);
-
-        // $sql = 'show tables like ' . '"order_' . date('Y', time()) . '"';
-        // $res = Db::query($sql);
-        // dump($res);
-        // if ($res) {
-        //     dump("存在");
-        // } else {
-        //     dump("不存在");
-        //     $table = 'order_' . date('Y', time());
-        //     $sql = "create table " . $table . "(`order_id` int(11) unsigned not null auto_increment primary key comment '订单id',
-        //         `order_num` varchar(32) not null comment '订单号',
-        //         `order_money` decimal(10,2) not null comment '订单总金额',
-        //         `pay_money` decimal(10,2) not null comment '用户实际支付的金额',
-        //         index order_num(order_num)
-        //         )engine=innodb default charset=utf8;";
-        //     $res = Db::execute($sql);
-        //     dump($res);
-        // }
-
-        // $where['id']=['>=',87];
-        $where['lastname'] = ['like', '%志%'];
-        $res = Db::name('yzy')->where($where)->limit(10)->select();
-        // foreach($res as $k=>$v){
-        //     dump($v['id']);
-        // }
-        dump($res);
-    }
+    
     public function insertDataToOrderAction(){
         $res=true;
         $data=Db::name('order_2019')->select();
@@ -140,5 +105,9 @@ class Index extends Base
             $arr=self::responseFailAction('删除失败');
         }
         return json($arr);
+    }
+    public function testAction()
+    {
+        
     }
 }

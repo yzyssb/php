@@ -65,6 +65,15 @@ return [
     'username'        => 'bdm307806617',
     // 密码
     'password'        => 'yzy10000YZY',
+    // 'hostname'       => '192.168.1.76',
+    // // 数据库名
+    // 'database'       => 'dazuhang2',
+    // // 用户名
+    // 'username'       => 'yangzhiyuan',
+    // // 密码
+    // 'password'       => '123456789',
+
+
     // 端口
     'hostport'        => '3306',
     // 连接dsn

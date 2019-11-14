@@ -46,7 +46,23 @@ Route::any('handleArticle','index/articlesManagement/handleArticle');
 Route::any('deleteArticle','index/articlesManagement/deleteArticle');
 Route::any('getArticleDetail','index/articlesManagement/getArticleDetail');
 
+
+// Route::any('dzhtest','index/articlesManagement/dzhtest');
+
 //上传接口
 Route::any('upload','index/articlesManagement/upload');
+
+//wx
+Route::any('getOpenId','wx/Home/getOpenId');
+Route::any('getUnionId','wx/Home/getUnionId');
+Route::any('wxPay','wx/Home/wxPay');
+Route::any('wxnotify','wx/Home/wxnotify');
+Route::any('getAccessToken','wx/Home/getAccessToken');
+Route::any('sendTemplate','wx/Home/sendTemplate');
+Route::any('newTest','wx/Home/newTest');
+
+Route::any('getMessage','wx/Home/getMessage');
+// Route::any('requestAPI','wx/Home/requestAPI');
+// Route::any('getAccess','wx/Home/getAccess');
 
 Route::miss('index/index/test');
