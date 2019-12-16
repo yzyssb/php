@@ -67,3 +67,9 @@ function get_accessToken(){
     $token = $array['access_token'];
     return $token;
 }
+
+
+define('BD_dealId','470214745');
+define('BD_platform_public_key','MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDxI/n2sD5OHAvB4MSmK9hYzIQiEj9j54xeR9ycvrDsLH/quVOCA0aiUK0TPRW0VfTYHcfQNagiRCVA6y3JWt9j5FaIR5bcKI741Lr91BH/1WlRCNol9Bu/eOrB5ilv6wwW3HHER10+5Vpxr6zsNuVLBjhYtzQC4ZM+m7SvR2U3/QIDAQAB');
+define('BD_APP_KEY','MMUa3N');
+define('BD_APP_ID','28991');

@@ -76,7 +76,7 @@ class ArticlesManagement extends Base
     {
         try {
             $params = $request->param();
-            $data = Articles::where('title|content','like','%'.$params['key'].'%')->order('create_time desc')->paginate($params['limit']);
+            $data = Articles::where('title|content', 'like', '%' . $params['key'] . '%')->order('create_time desc')->paginate($params['limit']);
             if (count($data) == 0 && $params['page'] > 1) {
                 $data = Articles::order('update_time')->paginate($params['limit'], false, ["page" => $params['page'] - 1]);
             }
@@ -153,22 +153,5 @@ class ArticlesManagement extends Base
         } catch (Exception $Exception) {
             return json(self::responseFailAction($Exception));
         }
-    }
-
-    /**
-     * 文件上传
-     * @param string $filename
-     * @param string $path
-     * @param array $type
-     * @return array
-     */
-    public function uploadAction()
-    {
-        $files = request()->file('file');
-        $url=request()->url(true);
-        $path=ROOT_PATH . 'public' . DS . 'uploads'. DS;
-        $info = $files->move($path);
-        $url_prefix=stripos($url,'yangzhiyuan.top')!=false?'https://www.yangzhiyuan.top/tp5/public/uploads/':'http://192.168.1.195/tp5/public/uploads/';
-        return json(self::responseSuccessAction(['url' => $url_prefix.str_replace('\\','/',$info->getSaveName())]));
     }
 }

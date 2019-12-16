@@ -49,9 +49,6 @@ Route::any('getArticleDetail','index/articlesManagement/getArticleDetail');
 
 // Route::any('dzhtest','index/articlesManagement/dzhtest');
 
-//上传接口
-Route::any('upload','index/articlesManagement/upload');
-
 //wx
 Route::any('getOpenId','wx/Home/getOpenId');
 Route::any('getUnionId','wx/Home/getUnionId');
@@ -62,7 +59,29 @@ Route::any('sendTemplate','wx/Home/sendTemplate');
 Route::any('newTest','wx/Home/newTest');
 
 Route::any('getMessage','wx/Home/getMessage');
-// Route::any('requestAPI','wx/Home/requestAPI');
-// Route::any('getAccess','wx/Home/getAccess');
+Route::any('xcxGetMessageNew','wx/CustomerMessage/getMessage');
 
 // Route::miss('index/index/test');
+
+
+Route::any('test','push/Worker/index');
+
+//tt
+Route::any('ttGetOpenid','tt/Home/getOpenid');
+Route::any('dyCategoryList','tt/Home/dyCategoryList');
+Route::any('dyNewArticle','tt/Home/dyNewArticle');
+Route::any('dyArticleList','tt/Home/dyArticleList');
+Route::any('dyArticleDetail','tt/Home/dyArticleDetail');
+Route::any('dyDelete','tt/Home/dyDelete');
+
+//百度
+Route::any('getRsaSign','baidu/Index/getRsaSign');
+Route::any('checkRsaSign','baidu/Index/checkRsaSign');
+Route::any('baiduPay','baidu/Index/baiduPay');
+
+//上传接口
+Route::any('upload','index/UploadOrDelete/upload');
+Route::any('multiUpload','index/UploadOrDelete/multiUpload');
+Route::any('delDirAndFile','index/UploadOrDelete/delDirAndFile');
+Route::any('delAllFiels','index/UploadOrDelete/delAllFiels');
+Route::any('delFile','index/UploadOrDelete/delFile');
