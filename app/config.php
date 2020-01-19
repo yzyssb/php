@@ -242,4 +242,23 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+
+    'db_dzh'=>[
+        // 数据库类型
+        'type' => 'mysql',
+        // 服务器地址
+        'hostname' => '192.168.1.76',
+        // 数据库名
+        'database' => 'dazuhang2',
+        // 用户名
+        'username' => 'yangzhiyuan',
+        // 密码
+        'password' => '123456789',
+        // 端口
+        'hostport' => '3306',
+        // 数据库编码默认采用utf8
+        'charset' => 'utf8mb4',
+        // 数据库表前缀
+        'prefix' => 'tp_',
+    ]
 ];

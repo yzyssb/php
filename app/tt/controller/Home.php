@@ -24,7 +24,8 @@ class Home extends Base
     //获取分类列表
     public function dyCategoryListAction()
     {
-        $data = DyCategoryList::field('id,title')->select();
+        $params = request()->param();
+        $data = DyCategoryList::field('id,title')->where(["type"=>$params['type']])->select();
         return json(self::responseSuccessAction($data));
     }
 
@@ -44,6 +45,7 @@ class Home extends Base
         $data->category_id = $params['category_id'];
         $cate=DyCategoryList::getById($params['category_id']);
         $data->category_name=$cate['title'];
+        $data->type=$cate['type'];
         $data->msg_type = isset($params['img_arr']) && !empty($params['img_arr']) ? 2 : 1;
         $res = $data->save();
         return json(self::responseSuccessAction($res));
@@ -62,9 +64,21 @@ class Home extends Base
     {
         try {
             $params = request()->param();
-            $data = DyNewsList::where('title|content', 'like', '%' . $params['key'] . '%')->paginate(isset($params['limit']) ? $params['limit'] : 10);
+            $where=[];
+            if(isset($params['type'])){
+                $where["type"]=$params['type'];
+            }
+            else{
+                $where["type"]=2;
+            }
+            $data = DyNewsList::where('title|content', 'like', '%' . $params['key'] . '%')->where($where)->paginate(isset($params['limit']) ? $params['limit'] : 10);
             foreach($data as $v){
-                $v['img_arr']=explode(',',$v['img_arr']);
+                if($v['img_arr']){
+                    $v['img_arr']=explode(',',$v['img_arr']);
+                }else{
+                    $v['img_arr']=[];
+                }
+                //表情转化
                 $v['content']=html_entity_decode($v['content']);
             }
             return json(self::responseSuccessAction($data));
